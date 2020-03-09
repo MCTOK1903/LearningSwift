@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     var timer = Timer()
     var timerforImage = Timer()
     var counter = 0
-    var visibleCheck = true
     var mortyArray = [UIImageView]()
     var score = 0
     var highScore = 0
@@ -105,7 +104,6 @@ class ViewController: UIViewController {
     @objc func setTimer(){
         counter -= 1
         timerLabel.text = "Time:\(counter)"
-        
         
         if counter == 0 {
             timer.invalidate()
