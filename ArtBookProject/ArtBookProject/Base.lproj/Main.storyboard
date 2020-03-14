@@ -105,9 +105,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="cQP-n8-dgP"/>
                     <connections>
-                        <outlet property="artistLabel" destination="x8l-Tw-bOb" id="ssX-i7-3ne"/>
+                        <outlet property="artistLabel" destination="7Vz-B1-ciZ" id="Wy9-Cn-8LI"/>
                         <outlet property="imageView" destination="roA-yQ-4Sj" id="Miw-xa-lC4"/>
                         <outlet property="nameLabel" destination="EsR-DU-EE8" id="RsW-fH-bJF"/>
+                        <outlet property="saveButton" destination="wTa-lb-MFo" id="1IN-xv-b96"/>
                         <outlet property="yearLabel" destination="x8l-Tw-bOb" id="ade-Go-v7G"/>
                     </connections>
                 </viewController>
