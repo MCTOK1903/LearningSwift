@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     var landMarkNames = [String]()
@@ -33,7 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         landMarkImages.append(UIImage(named: "trojanHorse.jpg")!)
         
         navigationItem.title = "Land Mark"
-        
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -60,15 +60,15 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "toImageViewController"{
-                let destinationImage = segue.destination as! ImageViewController
-                destinationImage.selectedLanMarkImage = landMarkImages[selectedIndex]
-                
-                let destinationLabel = segue.destination as! ImageViewController
-                destinationLabel.selectedLandMarkName = landMarkNames[selectedIndex]
-            }
-           }
-
-
+        if segue.identifier == "toImageViewController"{
+            let destinationImage = segue.destination as! ImageViewController
+            destinationImage.selectedLanMarkImage = landMarkImages[selectedIndex]
+            
+            let destinationLabel = segue.destination as! ImageViewController
+            destinationLabel.selectedLandMarkName = landMarkNames[selectedIndex]
+        }
+    }
+    
+    
 }
 
