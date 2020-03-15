@@ -11,7 +11,6 @@ import CoreData
 
 class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSource {
     
-    
     @IBOutlet weak var textView: UITableView!
     
     var nameArray = [String]()
@@ -29,7 +28,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add, target: self, action: #selector(addButtonClicked)
         )
-        
         getData()
     }
     
@@ -68,7 +66,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         do {
             let results = try context?.fetch(fetchRequest)
             
-            
             for result in results as! [NSManagedObject]{
                 if let name = result.value(forKey: "name") as? String{
                     nameArray.append(name)
@@ -82,7 +79,6 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
         }catch{
             print("error")
         }
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -134,11 +130,7 @@ class ViewController: UIViewController, UITableViewDelegate,UITableViewDataSourc
             }catch{
                 print("eroor")
             }
-            
-            
         }
     }
-    
-    
 }
 

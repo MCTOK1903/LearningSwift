@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 class DetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigationControllerDelegate {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var yearLabel: UITextField!
@@ -32,7 +32,7 @@ class DetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
-    
+            
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Paintings")
             let idString = chosenPaintingId?.uuidString
             fetchRequest.predicate = NSPredicate(format: "id = %@", idString!)
@@ -56,22 +56,17 @@ class DetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
                             let image = UIImage(data: imageData)
                             imageView.image = image
                         }
-                        
-                     }
+                    }
                 }
             }catch{
                 print("error")
             }
-            
-            
-            
-            
+          
         }else{
             saveButton.isHidden = false
             saveButton.isEnabled = false
             nameLabel.text = "" // example
         }
-
         
         //Recognizers
         
@@ -83,7 +78,6 @@ class DetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         imageView.addGestureRecognizer(imageGestureRecognizer)
         
     }
-    
     
     @objc func selectImgae(){
         let picker = UIImagePickerController()
@@ -102,7 +96,7 @@ class DetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
     @objc func hideKeyboard(){
         view.endEditing(true)
     }
-
+    
     @IBAction func saveButton(_ sender: Any) {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -130,6 +124,5 @@ class DetailsVC: UIViewController, UIImagePickerControllerDelegate , UINavigatio
         
         NotificationCenter.default.post(name: .init(rawValue: "checkData"), object: nil)
         navigationController?.popViewController(animated: true)
-        
     }
 }
