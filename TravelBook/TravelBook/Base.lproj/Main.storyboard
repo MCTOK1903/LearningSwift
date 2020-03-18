@@ -60,6 +60,7 @@
                         <outlet property="descriptionTF" destination="3bm-L5-uAK" id="8qx-aK-QDh"/>
                         <outlet property="mapView" destination="9L9-YB-90V" id="UeW-hU-Ymv"/>
                         <outlet property="placeNameTF" destination="jbG-bj-KwD" id="VXY-SS-YKC"/>
+                        <outlet property="saveButton" destination="Phd-Dv-xIZ" id="hQn-EL-2fP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -69,7 +70,6 @@
         <!--Navigation Controller-->
         <scene sceneID="wns-RT-838">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Pf-Px-8TK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bSp-WZ-jDx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YzH-H0-7ny">
@@ -81,6 +81,7 @@
                         <segue destination="cVA-oQ-0zm" kind="relationship" relationship="rootViewController" id="0oO-LB-gQ4"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Pf-Px-8TK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="116.51785714285714"/>
         </scene>

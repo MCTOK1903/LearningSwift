@@ -27,6 +27,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     var annotationSubTitle = ""
     var annotationLatitude = Double()
     var annotationLongtude = Double()
+    @IBOutlet weak var saveButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,11 +74,17 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                                         let anotation = MKPointAnnotation()
                                         anotation.title = annotationTitle
                                         anotation.subtitle = annotationSubTitle
-                                        anotation.coordinate = CLLocationCoordinate2D(latitude: annotationLatitude, longitude: annotationLongtude)
-                                        
+                                        let coordinate = CLLocationCoordinate2D(latitude: annotationLatitude, longitude: annotationLongtude)
+                                        anotation.coordinate = coordinate
                                         mapView.addAnnotation(anotation)
                                         placeNameTF.text = annotationTitle
                                         descriptionTF.text = annotationSubTitle
+                                        
+                                        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+                                        let region = MKCoordinateRegion(center: coordinate, span: span)
+                                        mapView.setRegion(region, animated: true)
+                                        
+                                        saveButton.isHidden = true
                                     }
                                 }
                             }
@@ -89,6 +96,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
                 
             }catch{
                 print("error")
+               
             }
             
             
@@ -101,10 +109,12 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
-        let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-        let region = MKCoordinateRegion(center: location, span: span)
-        self.mapView.setRegion(region, animated: true)
+        if selectedTitle == "" {
+            let location = CLLocationCoordinate2D(latitude: locations[0].coordinate.latitude, longitude: locations[0].coordinate.longitude)
+            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let region = MKCoordinateRegion(center: location, span: span)
+            self.mapView.setRegion(region, animated: true)
+        }
     }
     
     func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
@@ -124,6 +134,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
             annotation.title = placeNameTF.text
             annotation.subtitle = descriptionTF.text
             self.mapView.addAnnotation(annotation)
+            saveButton.isEnabled = true
         }
     }
     
@@ -146,6 +157,7 @@ class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDele
         }catch{
             print("error")
         }
+        NotificationCenter.default.post(name: NSNotification.Name.init("newPlace"), object: nil)
         navigationController?.popViewController(animated: true)
     }
     
