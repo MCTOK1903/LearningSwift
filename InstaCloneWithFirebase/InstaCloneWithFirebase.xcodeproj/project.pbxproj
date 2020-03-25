@@ -17,6 +17,7 @@
 		00E6EA6B242B9903004F13E0 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E6EA6A242B9903004F13E0 /* FeedViewController.swift */; };
 		00E6EA6D242B9912004F13E0 /* UploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E6EA6C242B9912004F13E0 /* UploadViewController.swift */; };
 		00E6EA6F242B9921004F13E0 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E6EA6E242B9921004F13E0 /* SettingsViewController.swift */; };
+		00E6EA73242C0F61004F13E0 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E6EA72242C0F61004F13E0 /* FeedCell.swift */; };
 		76BAAC870A9EED79A7C215B3 /* Pods_InstaCloneWithFirebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 917B16B78329C7AA06B9ECDF /* Pods_InstaCloneWithFirebase.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		00E6EA6A242B9903004F13E0 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		00E6EA6C242B9912004F13E0 /* UploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadViewController.swift; sourceTree = "<group>"; };
 		00E6EA6E242B9921004F13E0 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		00E6EA72242C0F61004F13E0 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
 		917B16B78329C7AA06B9ECDF /* Pods_InstaCloneWithFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_InstaCloneWithFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B245737AAB21130D7B0E9E43 /* Pods-InstaCloneWithFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaCloneWithFirebase.debug.xcconfig"; path = "Target Support Files/Pods-InstaCloneWithFirebase/Pods-InstaCloneWithFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		E85AB24BD6C81E9D08D7AF7B /* Pods-InstaCloneWithFirebase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstaCloneWithFirebase.release.xcconfig"; path = "Target Support Files/Pods-InstaCloneWithFirebase/Pods-InstaCloneWithFirebase.release.xcconfig"; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				00E6EA6A242B9903004F13E0 /* FeedViewController.swift */,
 				00E6EA6C242B9912004F13E0 /* UploadViewController.swift */,
 				00E6EA6E242B9921004F13E0 /* SettingsViewController.swift */,
+				00E6EA72242C0F61004F13E0 /* FeedCell.swift */,
 				00E464FA242B8A6400377AA3 /* Main.storyboard */,
 				00E464FD242B8A6600377AA3 /* Assets.xcassets */,
 				00E464FF242B8A6600377AA3 /* LaunchScreen.storyboard */,
@@ -219,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00E6EA73242C0F61004F13E0 /* FeedCell.swift in Sources */,
 				00E464F9242B8A6400377AA3 /* ViewController.swift in Sources */,
 				00E6EA6D242B9912004F13E0 /* UploadViewController.swift in Sources */,
 				00E464F5242B8A6400377AA3 /* AppDelegate.swift in Sources */,
