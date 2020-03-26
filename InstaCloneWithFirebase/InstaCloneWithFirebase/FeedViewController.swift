@@ -7,11 +7,18 @@
 //
 
 import UIKit
+import Firebase
+import SDWebImage
 
 class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataSource{
 
 
     @IBOutlet weak var tableView: UITableView!
+    
+    var userEmailArray = [String]()
+    var userCommentArray = [String]()
+    var userLikesArray = [Int]()
+    var userImageArray = [String]()
     
     
     override func viewDidLoad() {
@@ -19,22 +26,60 @@ class FeedViewController: UIViewController, UITableViewDelegate,UITableViewDataS
         
         tableView.delegate = self
         tableView.dataSource = self
-        // Do any additional setup after loading the view.
+        
+        getDataFromFirestore()
+    }
+    
+    
+    func getDataFromFirestore(){
+        
+        let firestoreDatabase = Firestore.firestore()
+        
+        firestoreDatabase.collection("Posts").addSnapshotListener { (snapshot, error) in
+            
+            if error != nil{
+                print(error?.localizedDescription as Any)
+            }else{
+                if snapshot?.isEmpty != true{
+                    
+                    self.userImageArray.removeAll(keepingCapacity: false)
+                    self.userLikesArray.removeAll(keepingCapacity: false)
+                    self.userCommentArray.removeAll(keepingCapacity: false)
+                    self.userEmailArray.removeAll(keepingCapacity: false)
+                    
+                    for document in snapshot!.documents {
+                        
+                        if let postedBy = document.get("postedBy") as? String{
+                            self.userEmailArray.append(postedBy)
+                        }
+                        if let userComment = document.get("postComment") as? String{
+                            self.userCommentArray.append(userComment)
+                        }
+                        if let likes = document.get("likes") as? Int {
+                            self.userLikesArray.append(likes)
+                        }
+                        if let imageUrl = document.get("imageUrl") as? String {
+                            self.userImageArray.append(imageUrl)
+                        }
+                    }
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return userEmailArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! FeedCell
-        cell.emailLabel.text = "celal"
-        cell.commentLabel.text = "sa"
-        cell.likeLabel.text = "10"
-        cell.imageView?.image = UIImage(named: "select.png")
+        cell.emailLabel.text = userEmailArray[indexPath.row]
+        cell.userImageView.sd_setImage(with: URL(string: self.userImageArray[indexPath.row]))
+        cell.commentLabel.text = userCommentArray[indexPath.row]
+        cell.likeLabel.text = String(userLikesArray[indexPath.row])
         return cell
-        
     }
 
 }

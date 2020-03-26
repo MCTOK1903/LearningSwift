@@ -12,11 +12,9 @@ class FeedCell: UITableViewCell {
 
     @IBOutlet weak var emailLabel: UILabel!
     
-    
     @IBOutlet weak var userImageView: UIImageView!
     
     @IBOutlet weak var commentLabel: UILabel!
-    
     
     @IBOutlet weak var likeButton: UIButton!
     
@@ -34,7 +32,6 @@ class FeedCell: UITableViewCell {
     }
 
     @IBAction func likeClicked(_ sender: Any) {
-        
-        
     }
+    
 }
