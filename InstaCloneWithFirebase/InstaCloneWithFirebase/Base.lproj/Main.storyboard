@@ -130,6 +130,10 @@
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fcd-rQ-chQ">
                                                     <rect key="frame" x="20" y="59" width="374" height="284"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="374" id="GGv-0P-UiO"/>
+                                                        <constraint firstAttribute="height" constant="284" id="t9k-zk-aVW"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gle-eY-W4R">
                                                     <rect key="frame" x="20" y="351" width="374" height="39"/>
@@ -159,10 +163,18 @@
                                                         <action selector="likeClicked:" destination="cJA-H8-143" eventType="touchUpInside" id="etl-c4-FkW"/>
                                                     </connections>
                                                 </button>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVw-T1-wRT">
+                                                    <rect key="frame" x="342" y="20" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="XVw-T1-wRT" secondAttribute="trailing" constant="10" id="L0n-pQ-Uw1"/>
                                                 <constraint firstItem="OVo-V3-oBp" firstAttribute="leading" secondItem="fcd-rQ-chQ" secondAttribute="leading" id="PgE-D5-y1u"/>
                                                 <constraint firstItem="dVM-dD-8iT" firstAttribute="top" secondItem="uZo-wE-mye" secondAttribute="top" id="Sjj-cm-KDQ"/>
+                                                <constraint firstItem="OVo-V3-oBp" firstAttribute="firstBaseline" secondItem="XVw-T1-wRT" secondAttribute="firstBaseline" id="Tyv-4k-WQD"/>
                                                 <constraint firstItem="fcd-rQ-chQ" firstAttribute="trailing" secondItem="Gle-eY-W4R" secondAttribute="trailing" id="W4g-iG-E1O"/>
                                                 <constraint firstItem="Gle-eY-W4R" firstAttribute="top" secondItem="fcd-rQ-chQ" secondAttribute="bottom" constant="8" id="YU9-jb-fZM"/>
                                                 <constraint firstItem="Gle-eY-W4R" firstAttribute="trailing" secondItem="uZo-wE-mye" secondAttribute="trailing" id="ZPe-Ax-7gW"/>
@@ -181,6 +193,7 @@
                                             <outlet property="emailLabel" destination="OVo-V3-oBp" id="9RH-5y-Tzs"/>
                                             <outlet property="likeButton" destination="dVM-dD-8iT" id="G5B-Qd-pFk"/>
                                             <outlet property="likeLabel" destination="uZo-wE-mye" id="eWI-rY-htA"/>
+                                            <outlet property="userIDLabel" destination="XVw-T1-wRT" id="Yqt-Ba-JR7"/>
                                             <outlet property="userImageView" destination="fcd-rQ-chQ" id="2x3-e2-aZQ"/>
                                         </connections>
                                     </tableViewCell>
