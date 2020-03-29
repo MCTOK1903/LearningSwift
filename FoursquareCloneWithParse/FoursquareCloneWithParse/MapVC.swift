@@ -8,14 +8,13 @@
 
 import UIKit
 import MapKit
+import Parse
 
 class MapVC: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
 
     @IBOutlet weak var mapKit: MKMapView!
     
     var locationManager = CLLocationManager()
-    var chosenLatitude = ""
-    var chosenLongitude = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,12 +55,40 @@ class MapVC: UIViewController, MKMapViewDelegate,CLLocationManagerDelegate {
             
             self.mapKit.addAnnotation(annotation)
             
+            PlaceModel.sharedInstance.placeLatitude = String(coordinates.latitude)
+            PlaceModel.sharedInstance.placeLongitude = String(coordinates.longitude)
+            
             
         }
     }
     
     
     @objc func placeSaveButton(){
+        
+        let placesModel = PlaceModel.sharedInstance
+        let uuidString = UUID().uuidString
+        
+        let object = PFObject(className: "Places")
+        object["name"] = placesModel.placeName
+        object["type"] = placesModel.placeType
+        object["atmosphere"] = placesModel.placeAtmosphere
+        object["latitude"] = placesModel.placeLatitude
+        object["longitude"] = placesModel.placeLongitude
+        
+        if let imageData = placesModel.placeImage.jpegData(compressionQuality: 0.5){
+            object["image"] = PFFileObject(name: "\(uuidString).jpg", data: imageData)
+        }
+        
+        object.saveInBackground { (success, error) in
+            if error != nil{
+                let alert = UIAlertController(title: "Error!", message: error?.localizedDescription, preferredStyle: .alert)
+                let okButton = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okButton)
+                self.present(alert, animated: true, completion: nil)
+            }else{
+                self.performSegue(withIdentifier: "toTextView", sender: nil)
+            }
+        }
         
     }
     
